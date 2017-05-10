@@ -192,7 +192,7 @@ open class Sword: Eventable {
    - parameter options: Deletes messages from this user by amount of days
    - parameter reason: Optional -- reason for ban (attached to audit log)
   */
-    public func ban(_ userId: String, in guildId: String, with options: [String: Int] = [:], with reason: String? = nil, then completion: @escaping (RequestError?) -> () = {_ in}) {
+    public func ban(_ userId: String, in guildId: String, with options: [String: Int] = [:], for reason: String? = nil, then completion: @escaping (RequestError?) -> () = {_ in}) {
       self.request(.createGuildBan(guildId, userId), body: options, reason: reason) { data, error in
       completion(error)
     }
@@ -1408,7 +1408,7 @@ open class Sword: Eventable {
    - parameter guildId: Guild to remove them from
    - parameter reason: Optional -- reason to remove the member from guild (attached to audit log)
   */
-  public func removeMember(_ userId: String, from guildId: String, with reason: String? = nil, then completion: @escaping (RequestError?) -> () = {_ in}) {
+  public func removeMember(_ userId: String, from guildId: String, for reason: String? = nil, then completion: @escaping (RequestError?) -> () = {_ in}) {
     self.request(.removeGuildMember(guildId, userId), reason: reason) { data, error in
       completion(error)
     }
