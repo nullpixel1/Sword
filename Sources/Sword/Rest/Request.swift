@@ -25,7 +25,7 @@ extension Sword {
    - parameter method: Type of HTTP Method
    - parameter rateLimited: Whether or not the HTTP request needs to be rate limited
   */
-    func request(_ endpoint: Endpoint, body: [String: Any]? = nil, reason: String? = nil, file: String? = nil, authorization: Bool = true, rateLimited: Bool = true, then completion: @escaping (Any?, RequestError?) -> ()) {
+  func request(_ endpoint: Endpoint, body: [String: Any]? = nil, reason: String? = nil, file: String? = nil, authorization: Bool = true, rateLimited: Bool = true, then completion: @escaping (Any?, RequestError?) -> ()) {
     let sema = DispatchSemaphore(value: 0) //Provide a way to urlsession from command line
 
     let endpointInfo = endpoint.httpInfo
