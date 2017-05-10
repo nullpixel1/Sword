@@ -189,11 +189,11 @@ open class Sword: Eventable {
 
    - parameter userId: Member to ban
    - parameter guildId: Guild to ban member in
-   - parameter options: Deletes messages from this user by amount of days
    - parameter reason: Optional -- reason for ban (attached to audit log)
+   - parameter options: Deletes messages from this user by amount of days
   */
-  public func ban(_ userId: String, in guildId: String, with options: [String: Int] = [:], for reason: String? = nil, then completion: @escaping (RequestError?) -> () = {_ in}) {
-      self.request(.createGuildBan(guildId, userId), body: options, reason: reason) { data, error in
+  public func ban(_ userId: String, in guildId: String, for reason: String? = nil, with options: [String: Int] = [:], then completion: @escaping (RequestError?) -> () = {_ in}) {
+    self.request(.createGuildBan(guildId, userId), body: options, reason: reason) { data, error in
       completion(error)
     }
   }
